@@ -63,10 +63,10 @@ templates:
       abis:
         - name: PendleMarket
           file: ./abis/PendleMarket.json
-        - name: SushiFactory
-          file: ./abis/SushiFactory.json
-        - name: SushiPair
-          file: ./abis/SushiPair.json
+        - name: TraderJoeFactory
+          file: ./abis/TraderJoeFactory.json
+        - name: TraderJoePair
+          file: ./abis/TraderJoePair.json
         - name: ERC20
           file: ./abis/ERC20.json
       eventHandlers:

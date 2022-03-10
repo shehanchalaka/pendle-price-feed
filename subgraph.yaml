@@ -3,12 +3,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: SushiFactory
-    network: mainnet
+    name: TraderJoeFactory
+    network: avalanche
     source:
       address: "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
-      abi: SushiFactory
-      startBlock: 12638196
+      abi: TraderJoeFactory
+      startBlock: 6725074
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -16,22 +16,22 @@ dataSources:
       entities:
         - Token
       abis:
-        - name: SushiFactory
-          file: ./abis/SushiFactory.json
-        - name: SushiPair
-          file: ./abis/SushiPair.json
+        - name: TraderJoeFactory
+          file: ./abis/TraderJoeFactory.json
+        - name: TraderJoePair
+          file: ./abis/TraderJoePair.json
         - name: ERC20
           file: ./abis/ERC20.json
       blockHandlers:
         - handler: handleBlock
-      file: ./src/mappings/sushi.ts
+      file: ./src/mappings/traderJoe.ts
 
 templates:
   - kind: ethereum/contract
-    name: SushiPair
-    network: mainnet
+    name: TraderJoePair
+    network: avalanche
     source:
-      abi: SushiPair
+      abi: TraderJoePair
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -39,19 +39,19 @@ templates:
       entities:
         - Token
       abis:
-        - name: SushiFactory
-          file: ./abis/SushiFactory.json
-        - name: SushiPair
-          file: ./abis/SushiPair.json
+        - name: TraderJoeFactory
+          file: ./abis/TraderJoeFactory.json
+        - name: TraderJoePair
+          file: ./abis/TraderJoePair.json
         - name: ERC20
           file: ./abis/ERC20.json
       eventHandlers:
         - event: Sync(uint112,uint112)
           handler: handleSync
-      file: ./src/mappings/sushi.ts
+      file: ./src/mappings/traderJoe.ts
   - kind: ethereum/contract
     name: PendleMarket
-    network: mainnet
+    network: avalanche
     source:
       abi: PendleMarket
     mapping:

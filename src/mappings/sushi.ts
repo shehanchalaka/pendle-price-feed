@@ -7,14 +7,14 @@ import {
 import { Sync as SyncEvent } from "../../generated/SushiFactory/SushiPair";
 import { TokenUtils } from "../entities";
 import { getTokenPrice } from "../pricing";
+import { recordSLPTokenPrice, recordTokenPrice } from "../helpers/updates";
 import {
   initializeOTMarkets,
   initializeYTMarkets,
-} from "../helpers/initializers";
-import { recordSLPTokenPrice, recordTokenPrice } from "../helpers/updates";
+} from "../helpers/init-ethereum";
 
 export function handleBlock(event: ethereum.Block): void {
-  if (event.number.equals(BigInt.fromI32(12638196))) {
+  if (event.number.equals(BigInt.fromI32(12638042))) {
     // this will only run once
     initializeOTMarkets();
     initializeYTMarkets();

@@ -49,3 +49,27 @@ templates:
         - event: Sync(uint112,uint112)
           handler: handleSync
       file: ./src/mappings/traderJoe.ts
+  - kind: ethereum/contract
+    name: PendleMarket
+    network: {{network}}
+    source:
+      abi: PendleMarket
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+      abis:
+        - name: PendleMarket
+          file: ./abis/PendleMarket.json
+        - name: SushiFactory
+          file: ./abis/SushiFactory.json
+        - name: SushiPair
+          file: ./abis/SushiPair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Sync(uint256,uint256,uint256)
+          handler: handleSync
+      file: ./src/mappings/pendleMarket.ts

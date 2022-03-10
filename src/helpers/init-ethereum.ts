@@ -36,7 +36,7 @@ import {
   TOKEN_YT_SLP_PENDLE_WETH_29_DEC_2022,
   TOKEN_YT_SLP_USDC_WETH_29_DEC_2022,
   TOKEN_YT_WXBTRFLY_21_APR_2022,
-} from "../utils/constants";
+} from "../utils/constants/ethereum";
 
 export function initializeOTMarkets(): void {
   createNewMarket(

@@ -1,6 +1,31 @@
-type ExampleEntity @entity {
+type Token @entity {
   id: ID!
-  count: BigInt!
-  token0: Bytes! # address
-  token1: Bytes! # address
+  name: String!
+  symbol: String!
+  decimals: BigInt!
+  totalSupply: BigDecimal!
+  type: String!
+
+  currentPrice: BigDecimal!
+}
+
+type PriceHistory @entity {
+  id: ID!
+  hash: String!
+  timestamp: BigInt!
+  block: BigInt!
+  token: Token!
+  priceUSD: BigDecimal!
+}
+
+type Market @entity {
+  id: ID!
+  baseToken: String!
+  quoteToken: String!
+  type: String!
+}
+
+type DebugLog @entity {
+  id: ID!
+  message: String!
 }

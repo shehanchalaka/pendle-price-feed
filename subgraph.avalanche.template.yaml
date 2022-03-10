@@ -1,0 +1,51 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TraderJoeFactory
+    network: {{network}}
+    source:
+      address: "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
+      abi: TraderJoeFactory
+      startBlock: {{traderJoeFactoryStartBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+      abis:
+        - name: TraderJoeFactory
+          file: ./abis/TraderJoeFactory.json
+        - name: TraderJoePair
+          file: ./abis/TraderJoePair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      blockHandlers:
+        - handler: handleBlock
+      file: ./src/mappings/traderJoe.ts
+
+templates:
+  - kind: ethereum/contract
+    name: TraderJoePair
+    network: {{network}}
+    source:
+      abi: TraderJoePair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+      abis:
+        - name: TraderJoeFactory
+          file: ./abis/TraderJoeFactory.json
+        - name: TraderJoePair
+          file: ./abis/TraderJoePair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Sync(uint112,uint112)
+          handler: handleSync
+      file: ./src/mappings/traderJoe.ts

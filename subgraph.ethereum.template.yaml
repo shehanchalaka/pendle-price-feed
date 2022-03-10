@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: SushiFactory
-    network: mainnet
+    network: {{network}}
     source:
       address: "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
       abi: SushiFactory
-      startBlock: 12638196
+      startBlock: {{sushiFactoryStartBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -29,7 +29,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: SushiPair
-    network: mainnet
+    network: {{network}}
     source:
       abi: SushiPair
     mapping:
@@ -51,7 +51,7 @@ templates:
       file: ./src/mappings/sushi.ts
   - kind: ethereum/contract
     name: PendleMarket
-    network: mainnet
+    network: {{network}}
     source:
       abi: PendleMarket
     mapping:
